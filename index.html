@@ -4,14 +4,15 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body><div id="access_token"></div>
+  <body>
+    <span id="access_token">Your Access Key --&gt;</span>
 
     <script type="text/javascript">
       if (document.location.hash && document.location.hash != '') {
         var parsedHash = new URLSearchParams(window.location.hash.substr(1));
         if (parsedHash.get('access_token')) {
           var access_token = parsedHash.get('access_token');
-          document.getElementById('access_token').textContent = 'Your Access Key from the #url: ' + access_token;
+          document.getElementById('access_token').textContent = `Your Access Key from the #url: ${access_token}`;
         }
       }
     </script>
