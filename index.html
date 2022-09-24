@@ -9,12 +9,17 @@
 
     <script type="text/javascript">
       if (document.location.hash && document.location.hash != '') {
-        var parsedHash = new URLSearchParams(window.location.hash.substr(1));
-        if (parsedHash.get('access_token')) {
-          var access_token = parsedHash.get('access_token');
-          document.getElementById('access_token').textContent = `Your Access Key from the #url: ${access_token}`;
+        var urlParams = new URLSearchParams(window.location.hash.substr(1))
+        if (urlParams.get('access_token')) {
+          var access_token = urlParams.get('access_token')
+          var type = 'Access Key'
         }
+      }else{
+        var urlParams = new URL(window.location).searchParams
+        var access_token = urlParams.get('code')
+        var type = 'Code'
       }
+      document.getElementById('access_token').textContent = `Your ${type} from the #url: ${access_token}`
     </script>
   </body>
 </html>
